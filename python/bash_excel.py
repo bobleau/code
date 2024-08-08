@@ -1,6 +1,6 @@
 # Linux命令输出到Excel
 # 导入相关库
-import openpyxl, subprocess, datetime, os
+import subprocess, datetime, os
 from openpyxl import Workbook, load_workbook
 
 # 数据文件
@@ -32,7 +32,7 @@ print(row)
 if os.path.isfile(file): # 判断是否存在“file”
     book = load_workbook(file) # 如果是，打开这个“file”文件
 else:
-    book = openpyxl.Workbook() # 如果否，新建Excel
+    book = Workbook() # 如果否，新建Excel
 
 # 打开上次活动的工作簿
 sheet = book.active

@@ -3,8 +3,12 @@
 import subprocess, datetime, os
 from openpyxl import Workbook, load_workbook
 
+# 修改工作路径
+path = r"/home/bob/code/python"
+os.chdir(path)
+
 # 数据文件
-file = './example.xlsx'
+file = 'test.xlsx'
 
 # 执行命令
 command1 = ['df', '-h']
@@ -30,17 +34,15 @@ print(row)
 
 # 打开或者创建Excel空文档
 if os.path.isfile(file): # 判断是否存在“file”
-    book = load_workbook(file) # 如果是，打开这个“file”文件
+    workbook = load_workbook(file) # 如果是，打开这个“file”文件
 else:
-    book = Workbook() # 如果否，新建Excel
+    workbook = Workbook() # 如果否，新建Excel
 
 # 打开上次活动的工作簿
-sheet = book.active
+sheet = workbook.active
 
 # 写入数据
 sheet.append(row)
 
 # 保存文件
-book.save(file)
-
-
+workbook.save(file)

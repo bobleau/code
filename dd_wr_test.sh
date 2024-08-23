@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 设置要扫描的硬盘设备
+DEVICE="/dev/sdX"  # 替换为实际的设备名称，例如 /dev/sda
+
 # 设置日志文件路径
 LOGFILE="usb_test.log"
 
@@ -15,7 +18,7 @@ COUNT=0
 # 循环测试
 while [ $COUNT -lt $MAX_RUNS ]; do
     log "开始第 $((COUNT+1)) 次写入..."
-    pv --rate-limit 500k /dev/zero | sudo dd of=/dev/sdb bs=4M status=progress 2>> $LOGFILE
+    pv --rate-limit 500k /dev/zero | sudo dd of=$DEVICE bs=4M status=progress 2>> $LOGFILE
     if [ $? -ne 0 ]; then
         log "写入出错！"
         break
@@ -23,7 +26,7 @@ while [ $COUNT -lt $MAX_RUNS ]; do
     log "写入完成，开始验证数据..."
     
     # 读取数据并进行校验
-    sudo dd if=/dev/sdb bs=4M count=10 | cmp /dev/zero -
+    sudo dd if=$DEVICE bs=4M count=10 | cmp /dev/zero -
     if [ $? -ne 0 ]; then
         log "数据校验失败！"
         break

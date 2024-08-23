@@ -16,7 +16,7 @@ LOGFILE="dd_read_log.txt"
 # 执行读取操作
 for i in $(seq 1 $NUM_READS); do
     echo "第 $i 次读取: $(date)" | tee -a $LOGFILE
-    dd if=$DEVICE of=/dev/null bs=$BLOCK_SIZE count=10 iflag=direct status=progress 2>&1 | tee -a $LOGFILE
+    dd if=$DEVICE of=/dev/null bs=$BLOCK_SIZE iflag=direct status=progress 2>&1 | tee -a $LOGFILE
     sleep 1  # 每次读取之间暂停1秒
 done
 

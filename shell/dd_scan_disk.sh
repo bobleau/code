@@ -1,7 +1,16 @@
 #!/bin/bash
 
-# 设置要扫描的硬盘设备
-DEVICE="/dev/sdX"  # 替换为实际的设备名称，例如 /dev/sda
+# 提示用户输入要扫描的硬盘设备（不包括 /dev/）
+read -p "请输入要扫描的硬盘设备（例如 sda）： " DEVICE_NAME
+
+# 检查用户是否输入了设备名称
+if [ -z "$DEVICE_NAME" ]; then
+    echo "设备名称不能为空"
+    exit 1
+fi
+
+# 拼接设备名称，添加 /dev/ 前缀
+DEVICE="/dev/$DEVICE_NAME"
 
 # 设置读取块的大小和次数
 BLOCK_SIZE="1M"  # 可以根据需要调整块的大小

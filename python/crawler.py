@@ -151,7 +151,18 @@ def saveData(datalist,savepath):
 # 保存数据到数据库
 
 
+# 爬虫基本示例
+# import requests
+# from bs4 import BeautifulSoup
 
+# url = 'https://www.example.com'
+# response = requests.get(url)
+
+# soup = BeautifulSoup(response.text, 'html.parser')
+# titles = soup.find_all('h2', class_='title')
+
+# for title in titles:
+#     print(title.text)
 
 
 

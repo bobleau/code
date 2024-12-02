@@ -1,0 +1,13 @@
+:log info "Checking firmware...";
+/system package update check-for-updates
+:delay 10s;
+:if ([/system package update get status]="New version is available") \
+do={\
+:log info "Downloading firmware";
+/system package update download
+:delay 600s;
+:if ([/system package update get status]="Downloaded, please reboot router to upgrade it") \
+do={:log info "Download finish, Rebooting";
+/system reboot} \
+else={:log info "Download package fail"}} \
+else={:log info "No update.";}

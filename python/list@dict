@@ -1,0 +1,26 @@
+# 定义列表
+fruits = ["苹果", "香蕉", "橙子"]
+
+# 访问列表
+print(f"水果列表: {fruits}")
+print()
+
+print(f"第一个水果: {fruits[0]}")
+print()
+
+# 遍历列表
+for fruit in fruits:
+    print(fruit)
+print()
+print()
+
+
+
+# 定义字典 (dict)
+person = {"姓名": "李四", "年龄": 30, "城市": "北京"}
+print(f"个人信息: {person}")
+print()
+
+# 遍历字典
+for key, value in person.items():
+    print(f"{key}: {value}")

@@ -1,3 +1,6 @@
+# .gitignore
+.gitignore
+
 # Excel extensions
 *.xls
 *.xlsx

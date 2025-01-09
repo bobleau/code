@@ -1,7 +1,6 @@
-# Personal settings
+# Excel extensions
 *.xls
 *.xlsx
-.gitignore
 
 # VS code settings
 .vscode
